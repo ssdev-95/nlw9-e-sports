@@ -1,0 +1,6 @@
+node_modules/
+build/
+
+*error.log
+
+.env.local
