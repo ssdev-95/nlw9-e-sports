@@ -10,12 +10,12 @@ interface BGProps {
 
 export function Background({ children }: BGProps) {
   return (
-	  <ImageBackground
-		  source={galaxyBackground}
-			defaultSource={galaxyBackground}
-			style={styles.container}
-		>
-		  { children }
-		</ImageBackground>
-	)
+    <ImageBackground
+      source={galaxyBackground}
+      defaultSource={galaxyBackground}
+      style={styles.container}
+    >
+      {children}
+    </ImageBackground>
+  )
 }
