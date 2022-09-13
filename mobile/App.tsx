@@ -10,6 +10,7 @@ import {
 
 import { Home } from './src/screens/home'
 import { Background } from './src/components/background'
+import { Loader } from './src/components/loading'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,7 +25,7 @@ export default function App() {
 				translucent
 			/>
 
-			{fontsLoaded && <Home />}
+			{fontsLoaded ? <Home /> : <Loader />}
     </Background>
   )
 }

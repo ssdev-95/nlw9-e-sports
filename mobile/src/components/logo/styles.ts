@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'flex-start',
-		alignItems: 'center'
+	logo: {
+		width: 212,
+		marginTop:128,
+		marginBottom: 42
 	}
 })
