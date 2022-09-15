@@ -1,6 +1,7 @@
 import 'reflect-metadata'
 import 'dotenv/config'
 import express, { Request, Response } from 'express'
+import cors from 'cors'
 
 import { AppDataSource } from './database/data-source'
 import { Game } from './database/entity/Game'
@@ -12,6 +13,9 @@ const PORT = process.env.PORT || 9999
 
 const app = express()
 app.use(express.json())
+app.use(cors({
+	origin: process.env.NODe_ENV === 'development' ? '*' : 'https://kol.com br'
+}))
 
 //TODO: Get all games
 app.get('/games', async (req:Request, res:Response) => {
