@@ -1,26 +1,37 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "lint": "eslint src --ext .ts,.tsx",
-    "pretty": "prettier --write ./src",
-    "build": "tsc",
-    "dev": "tsnd src/server.ts"
-  },
-  "keywords": [],
-  "author": "xSallus",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.18.1"
-  },
-  "devDependencies": {
-    "@types/express": "^4.17.13",
-    "eslint": "^8.23.0",
-    "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.7.1",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^4.8.3"
-  }
+   "name": "server",
+   "version": "1.0.0",
+   "description": "",
+   "main": "server.js",
+   "scripts": {
+      "lint": "eslint src --ext .ts,.tsx",
+      "pretty": "prettier --write ./src",
+      "build": "tsc",
+      "dev": "tsnd src/server.ts",
+      "start": "ts-node src/index.ts",
+      "typeorm": "typeorm-ts-node-commonjs",
+			"migrate:dev":"typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:run",
+			"migrate:create":"typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:create",
+			"migrate:generate":"typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:generate"
+   },
+   "keywords": [],
+   "author": "xSallus",
+   "license": "MIT",
+   "dependencies": {
+      "dotenv": "^16.0.2",
+      "express": "^4.18.1",
+      "mysql": "^2.14.1",
+      "reflect-metadata": "^0.1.13",
+      "typeorm": "0.3.9"
+   },
+   "devDependencies": {
+      "@types/express": "^4.17.13",
+      "@types/node": "^16.11.10",
+      "eslint": "^8.23.0",
+      "eslint-config-prettier": "^8.5.0",
+      "prettier": "^2.7.1",
+      "ts-node": "10.7.0",
+      "ts-node-dev": "^2.0.0",
+      "typescript": "4.5.2"
+   }
 }
