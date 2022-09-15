@@ -1,38 +1,38 @@
 {"GAMES": [
   {
     "id": 1,
-    "name": "League of Legends",
-    "ads": 4,
-    "cover": "https://http.cat/500"
+    "title": "League of Legends",
+    "adsCount": 4,
+    "bannerUrl": "https://http.cat/500"
   },
   {
     "id": 2,
-    "name": "Dota 2",
-    "ads": 3,
-    "cover": "https://raw.githubusercontent.com/xSallus/nlw9-e-sports/main/web/src/assets/dota2.png"
+    "title": "Dota 2",
+    "adsCount": 3,
+    "bannerUrl": "https://raw.githubusercontent.com/xSallus/nlw9-e-sports/main/web/src/assets/dota2.png"
   },
   {
     "id": 3,
-    "name": "CS-GO",
-    "ads": 2,
-    "cover": "https://raw.githubusercontent.com/xSallus/nlw9-e-sports/main/web/src/assets/csgo.png"
+    "title": "CS-GO",
+    "adsCount": 2,
+    "bannerUrl": "https://raw.githubusercontent.com/xSallus/nlw9-e-sports/main/web/src/assets/csgo.png"
   },
   {
     "id": 4,
-    "name": "Apex",
-    "ads": 3,
-    "cover": "https://raw.githubusercontent.com/xSallus/nlw9-e-sports/main/web/src/assets/apex.png"
+    "title": "Apex",
+    "adsCount": 3,
+    "bannerUrl": "https://raw.githubusercontent.com/xSallus/nlw9-e-sports/main/web/src/assets/apex.png"
   },
   {
     "id": 5,
-    "name": "Fortnite",
-    "ads": 5,
-    "cover": "https://raw.githubusercontent.com/xSallus/nlw9-e-sports/main/web/src/assets/fortnite.png"
+    "title": "Fortnite",
+    "adsCount": 5,
+    "bannerUrl": "https://raw.githubusercontent.com/xSallus/nlw9-e-sports/main/web/src/assets/fortnite.png"
   },
   {
     "id": 6,
-    "name": "World of Warcraft",
-    "ads": 2,
-    "cover": "https://raw.githubusercontent.com/xSallus/nlw9-e-sports/main/web/src/assets/wow.png"
+    "title": "World of Warcraft",
+    "adsCount": 2,
+    "bannerUrl": "https://raw.githubusercontent.com/xSallus/nlw9-e-sports/main/web/src/assets/wow.png"
   }
 ]}
