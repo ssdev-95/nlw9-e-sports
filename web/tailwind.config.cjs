@@ -10,12 +10,18 @@ module.exports = {
 		},
 		extend: {
 			colors: {
-				background: '#121214'
+				background: '#121214',
+				green: {
+					300: '#43e7ad'
+				}
 			},
 			backgroundImage: {
 				galaxy: 'url("/nlw9-background.png")',
-				'nlw-gradient': 'linear-gradient(89.86deg, #9572fc 27.08%, #43e7ad 33.94%, #e1d55d 64%)',
-				'game-gradient': 'linear-gradient(100deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 67.08%)'
+				'nlw-gradient': 'linear-gradient(89.86deg, #9572fc 33%, #43e7ad 55%, #e1d55d 80.08%)',
+				'game-gradient': 'linear-gradient(100deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 40.08%)'
+			},
+			screens: {
+				mb: {'max':'869px'}
 			}
 		},
   },

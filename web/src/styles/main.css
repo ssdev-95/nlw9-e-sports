@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	*:focus {
+		@apply outline-[1px] outline-green-300 ring-transparent border-transparent;
+	}
+}
