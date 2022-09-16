@@ -10,11 +10,8 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { styles } from './styles'
 import { THEME } from '../../theme'
 
-interface Game {
-  id: number
-  name: string
+interface Game extends DuoFinder.Game {
   ads: number
-  cover: string
 }
 
 interface CardProps extends TouchableOpacityProps {
@@ -24,9 +21,9 @@ interface CardProps extends TouchableOpacityProps {
 export function GameCard({ game, ...rest }: CardProps) {
   return (
     <TouchableOpacity style={styles.container} {...rest}>
-      <ImageBackground source={{ uri: game.cover }} style={styles.cover}>
+      <ImageBackground source={{ uri: game.bannerUrl }} style={styles.cover}>
         <LinearGradient style={styles.footer} colors={THEME.COLORS.FOOTER}>
-          <Text style={styles.name}>{game.name}</Text>
+          <Text style={styles.name}>{game.title}</Text>
 
           <Text style={styles.ads}>{`${game.ads} ads`}</Text>
         </LinearGradient>
