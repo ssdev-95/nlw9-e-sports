@@ -35,4 +35,23 @@
     "adsCount": 2,
     "bannerUrl": "https://raw.githubusercontent.com/xSallus/nlw9-e-sports/main/web/src/assets/wow.png"
   }
+], "DUOS": [
+  {
+		"id":"ad_wnficbwmasi2jrc93jekf",
+		"name":"YanSoares#9114",
+		"yearsOfPlaying":3,
+		"weekDays":["D","F","S"],
+		"hourStart":"21:00",
+		"hourEnd":"23:00",
+		"useVoiceChannel":true
+	},
+	{
+		"id":"ad_jwfi3e8fitkk3totok4k2",
+		"name":"LuscaLima#4193",
+		"yearsOfPlaying":2,
+		"weekDays":["D","F","S"],
+		"hourStart":"18:00",
+		"hourEnd":"23:00",
+		"useVoiceChannel":false
+	}
 ]}
