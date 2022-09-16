@@ -18,7 +18,7 @@ interface Game extends DuoFinder.Game {
   ads: number
 }
 
-export default function Home() {
+export function Home() {
   const navigator = useNavigation()
   const [games, setGames] = useState<Game[]>([])
 	const [isLoadingContent, setIsLoadingContent] = useState(true)

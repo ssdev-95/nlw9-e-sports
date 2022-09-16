@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Image, View, FlatList, TouchableOpacity } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { useRoute, useNavigation } from '@react-navigation/native'
+//import { useRoute, useNavigation } from '@react-navigation/native'
 import { Entypo	} from '@expo/vector-icons'
 
 import { Logo } from '../../components/logo'
@@ -18,13 +18,19 @@ import { api } from '../../services/api'
 type Game = DuoFinder.Game
 type Duo = DuoFinder.Duo
 
-export default function Game() {
-  const navigation = useNavigation()
+export function Game() {
+  /*const navigation = useNavigation()
 	const route = useRoute()
 	const game = route.params as Game
 
 	function handleGoBack() {
 	  navigation.goBack()
+	}*/
+
+	const game = {
+  	id: 'ga_m2f8chnwsOGb29f93',
+	  title: 'League of Cats',
+		bannerUrl: 'https://http.cat/401'
 	}
 
 	const [isLoadingContent, setIsLoadingContent] = useState(true)
@@ -55,7 +61,7 @@ export default function Game() {
 	  <Background>
 			<SafeAreaView style={styles.container}>
 			  <View style={styles.header}>
-  		    <TouchableOpacity onPress={handleGoBack}>
+  		    <TouchableOpacity>
 			  	  <Entypo
 		  	  	  name="chevron-thin-left"
 		    			size={20}
