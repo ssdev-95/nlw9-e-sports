@@ -2,17 +2,25 @@ import {
   createNativeStackNavigator
 } from '@react-navigation/native-stack'
 
-import { Game } from '../screens/game'
-import { Home } from '../screens/home'
+import Game from '../screens/game'
+import Home from '../screens/home'
 
-const { Navigator, Screen } = createNativeStackNavigator()
+const Stack = createNativeStackNavigator()
 
 export function AppRoutes() {
   return (
-	  <Navigator screenOptions={{ headerShown:false }}>
-		  <Screen name="home" component={Home} />
+	  <Stack.Navigator
+			initialRouteName="home"
+		>
+		  <Stack.Screen
+			  name="home"
+				component={Home}
+			/>
 
-			<Screen name="game" component={Game} />
-		</Navigator>
+			<Stack.Screen
+			  name="game"
+				component={Game}
+			/>
+		</Stack.Navigator>
 	)
 }

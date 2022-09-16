@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+
 import { useNavigation } from '@react-navigation/native'
 
 import { api } from '../../services/api'
@@ -17,16 +18,17 @@ interface Game extends DuoFinder.Game {
   ads: number
 }
 
-export function Home() {
-  const navigation = useNavigation()
+export default function Home() {
+  const navigator = useNavigation()
   const [games, setGames] = useState<Game[]>([])
 	const [isLoadingContent, setIsLoadingContent] = useState(true)
 
 	function handleGoToGameScreen(game: DuoFinder.Game) {
-	  navigation.navigate('game', game)
+	  navigator.navigate('game', game)
 	}
 
   useEffect(() => {
+	  console.log('Renderizou a homescreen :D')
     api
 		  .get<Game[]>('/GAMES')
 			.then((res) => {
@@ -41,39 +43,46 @@ export function Home() {
 			.finally(() => setIsLoadingContent(false))
   }, [])
 
+	if(isLoadingContent) {
+	  return (
+		  <Background>
+			  <SafeAreaView style={styles.container}>
+				  <Loader />
+				</SafeAreaView>
+			</Background>
+		)
+	}
+
   return (
 	  <Background>
       <SafeAreaView style={styles.container}>
-  		  {isLoadingContent ? (<Loader />) : (<>
-  			  <Logo />
+  			<Logo />
 
-  				<Heading
-			  	  title="Your duo is here!"
-		  			subtitle="Select the game you wanna play.."
-	  			/>
+  			<Heading
+			    title="Your duo is here!"
+					subtitle="Select the game you wanna play.."
+	  		/>
 
-  				<FlatList
-				    horizontal
-			  		data={games}
-		  			renderItem={({ item }) => {
-						  const { id, title, bannerUrl } = item
-
-						  return (
-  	  				  <GameCard
-  							  game={item}
-  								onPress={() => {
-								    handleGoToGameScreen({
-	  				  				id, title, bannerUrl
-										})
-			  					}}
-			  				/>
-							)
-  					}}
-					  keyExtractor={(game) => String(game.id)}
-				  	showsHorizontalScrollIndicator={false}
-			  		contentContainerStyle={styles.contentList}
-		  		/>
-	  		</>)}
+  			<FlatList
+			    horizontal
+			  	data={games}
+					renderItem={({ item }) => {
+						const { id, title, bannerUrl } = item
+						return (
+  	  				<GameCard
+								game={item}
+								onPress={() => {
+							    handleGoToGameScreen({
+	  			  				id, title, bannerUrl
+		  						})
+			  				}}
+			  			/>
+						)
+					}}
+				  keyExtractor={(game) => String(game.id)}
+			  	showsHorizontalScrollIndicator={false}
+					contentContainerStyle={styles.contentList}
+		  	/>
       </SafeAreaView>
 		</Background>
   )

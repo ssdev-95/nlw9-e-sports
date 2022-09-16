@@ -2,10 +2,10 @@ import { StatusBar } from 'react-native'
 
 import {
   useFonts,
-  Inter_400Regular as Regular,
-  Inter_600SemiBold as Medium,
-  Inter_700Bold as Bold,
-  Inter_900Black as Black,
+  Inter_400Regular,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  Inter_900Black,
 } from '@expo-google-fonts/inter'
 
 import { Routes } from './src/routes'
@@ -14,10 +14,10 @@ import { Loader } from './src/components/loading'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    Regular,
-    Medium,
-    Bold,
-    Black,
+    Inter_400Regular,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_900Black,
   })
 
   return (
