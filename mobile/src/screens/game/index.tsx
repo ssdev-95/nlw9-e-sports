@@ -8,6 +8,7 @@ import { Logo } from '../../components/logo'
 import { Loader } from '../../components/loading'
 import { Heading } from '../../components/heading'
 import { DuoCard } from '../../components/duo-card'
+import { DuoMatch } from '../../components/duo-match'
 import { Background } from '../../components/background'
 
 import { styles } from './styles'
@@ -35,6 +36,7 @@ export function Game() {
 
 	const [isLoadingContent, setIsLoadingContent] = useState(true)
 	const [duos, setDuos] = useState<Duo[]>([])
+	const [selectedDuo, setSelectedDuo] = useState('')
 
   useEffect(() => {
 	  api
@@ -60,6 +62,11 @@ export function Game() {
   return (
 	  <Background>
 			<SafeAreaView style={styles.container}>
+			  <DuoMatch
+				  visible={!!selectedDuo.trim()}
+				  discord={selectedDuo}
+					onClose={()=>setSelectedDuo('')}
+				/>
 			  <View style={styles.header}>
   		    <TouchableOpacity>
 			  	  <Entypo
@@ -92,7 +99,10 @@ export function Game() {
 				  data={duos}
 				  keyExtractor={(duo) => duo.id}
 					renderItem={({ item }) => (
-					  <DuoCard duo={item} />
+					  <DuoCard
+						  duo={item}
+							onPress={()=>setSelectedDuo(item.id)}
+						/>
 					)}
 					horizontal
 					showsHorizontalScrollIndicator={false}

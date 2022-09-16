@@ -7,15 +7,17 @@ import { styles } from './styles'
 
 interface DuoProps {
   duo:DuoFinder.Duo
+  onPress: () => void
 }
 	
-export function DuoCard({ duo }:DuoProps) {
+export function DuoCard({ duo, onPress }:DuoProps) {
   const availability = `${duo.weekDays.length} days \u2022 ${duo.hourStart} ~ ${duo.hourEnd}`
 	const yearsOfPlaying = `${duo.yearsOfPlaying} years`
 
 	const useVoiceChannel = duo.useVoiceChannel ? 'Yes' : 'No'
 
 	const useVoiceChannelColor = duo.useVoiceChannel ? THEME.COLORS.SUCCESS : THEME.COLORS.ALERT
+
   return (
     <View style={styles.container}>
 		  <DuoInfo
@@ -40,6 +42,7 @@ export function DuoCard({ duo }:DuoProps) {
 			/>
 
 			<TouchableOpacity
+			  onPress={onPress}
 			  style={styles.button}
 			>
 			  <Entypo
