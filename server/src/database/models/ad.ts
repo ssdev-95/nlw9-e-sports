@@ -10,7 +10,6 @@ export class Ad extends Model {
 	hourStart: string
 	hourEnd: string
 	useVoiceChannel: boolean
-	createdAt: Date
 	gameId: string
 }
 
@@ -49,10 +48,6 @@ Ad.init({
 		type: DataTypes.BOOLEAN,
 		allowNull: false,
 		defaultValue: false
-	},
-	createdAt: {
-		type: DataTypes.DATE,
-		defaultValue: DataTypes.NOW
 	},
 	gameId: {
 		type: DataTypes.STRING,

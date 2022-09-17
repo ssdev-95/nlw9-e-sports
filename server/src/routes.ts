@@ -1,15 +1,23 @@
 import express from 'express'
-import { Game } from './database/models/game'
+
+import { Seeder } from './database/seed'
+
+import { CAUseCase } from './use-cases/create-ad'
+
+import { GABGIUseCase } from './use-cases/get-ads-by-game-id'
+
+import { GDBAIUseCase } from './use-cases/get-discord-by-ad-id'
+
+import { GAGUseCase } from './use-cases/get-all-games'
 
 export const router = express.Router()
 
-router.get('/games', async (_req, res) => {
-	const games = await Game.findAll()
-	return res.status(204).json({ games })
-})
+router.post('/games/seed', new Seeder().up)
 
-router.get('/games/:id/ads', async (_req, res) => {})
+router.get('/games', new GAGUseCase().handle)
 
-router.post('/games:id/ads', async (_req, res) => {})
+router.get('/games/:id/ads', new GABGIUseCase().handle)
 
-router.get('ads/:id/discord', async (_req, res) => {})
+router.post('/games/:id/ads', new CAUseCase().handle)
+
+router.get('/ads/:id/discord', new GDBAIUseCase().handle)
