@@ -9,11 +9,9 @@ export class Seeder {
   	try {
   		await sequelize.authenticate()
 
-			GAMES.forEach(async (igame) => {
-				const newGame = Game.build(igame)
-
-				await newGame.save({
-  				validate: true
+			GAMES.forEach(async (game) => {
+				await Game.create(game, {
+					validate: true
 				})
 			})
 

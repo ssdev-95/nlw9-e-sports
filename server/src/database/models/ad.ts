@@ -1,6 +1,8 @@
 import { DataTypes, Model } from 'sequelize'
 import { sequelize } from '../sequelize'
 
+import { Game } from './game'
+
 export class Ad extends Model {
 	declare id: string
 	name: string
@@ -54,5 +56,11 @@ Ad.init({
 		allowNull: false
 	}
 }, { sequelize, modelName: 'ads' })
+
+// TODO: If relation fails, start over  :D
+Ad.belongsTo(Game, {
+	foreignKey: 'gameId'
+})
+Game.hasMany(Ad)
 
 Ad.sync({ alter: true }).catch(console.error)

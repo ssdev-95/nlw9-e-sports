@@ -6,10 +6,10 @@ export class CAUseCase {
   	try {
 			const controller = new CAController()
 
-			const body = req.body
 			const gameId = req.params.id
+			const body = req.body
 
-			const ad = controller.execute({
+			const ad = await controller.execute({
 				...body,
 				gameId
 			})

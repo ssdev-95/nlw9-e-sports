@@ -14,12 +14,11 @@ export interface IAd {
 export class CAController {
 	async execute (ad: IAd) {
   	try {
-			const entry = Ad.build({
+			const newAd = await Ad.create({
 				...ad,
 				weekDays: ad.weekDays.join(',')
-			})
+			}, { validate: true })
 
-			const newAd = await entry.save()
   	  return newAd
   	} catch(err) {
   		throw err
