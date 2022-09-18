@@ -2,30 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-//import { useNavigation } from '@react-navigation/native'
-
-import { api } from '../../services/api'
-
 import { GameCard } from '../../components/game-card'
 import { Logo } from '../../components/logo'
 import { Loader } from '../../components/loading'
 import { Heading } from '../../components/heading'
 import { Background } from '../../components/background'
 
+import { api } from '../../services/api'
 import { styles } from './styles'
 
 interface Game extends DuoFinder.Game {
-  ads: number
+  adsCount: number
 }
 
-export function Home() {
-  //const navigator = useNavigation()
+export function Home({ navigation }:any) {
   const [games, setGames] = useState<Game[]>([])
 	const [isLoadingContent, setIsLoadingContent] = useState(true)
 
 	function handleGoToGameScreen(game: DuoFinder.Game) {
-	  //navigator.navigate('game', game)
-		console.log(game)
+		navigation.navigate('game', game)
 	}
 
   useEffect(() => {
@@ -39,7 +34,7 @@ export function Home() {
 
 	if(isLoadingContent) {
 	  return (
-		  <Background>
+		  <Background style={styles.container}>
 			  <SafeAreaView style={styles.container}>
 				  <Loader />
 				</SafeAreaView>
@@ -73,7 +68,7 @@ export function Home() {
 			  			/>
 						)
 					}}
-				  keyExtractor={(game) => String(game.id)}
+				  keyExtractor={(game) => game.id}
 			  	showsHorizontalScrollIndicator={false}
 					contentContainerStyle={styles.contentList}
 		  	/>

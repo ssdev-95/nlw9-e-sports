@@ -13,10 +13,12 @@ import {
   Inter_900Black,
 } from '@expo-google-fonts/inter'
 
-import { Game } from './src/screens/game'
-import { Background } from './src/components/background'
+import { Routes } from './src/routes'
 import { Loader } from './src/components/loading'
+import { styles } from './src/components/background/styles'
+
 import { getPushNotificationToken } from './src/services/getPushNotificationToken'
+import {Background} from './src/components/background'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -47,14 +49,20 @@ export default function App() {
 	}, [])
 
   return (
-    <Background>
+    <>
       <StatusBar
         barStyle="light-content"
         backgroundColor="transparent"
         translucent
       />
 
-      {fontsLoaded ? <Game /> : <Loader />}
-    </Background>
+      {fontsLoaded ? (
+				<Routes />
+			) : (
+			  <Background>
+				  <Loader />
+				</Background>
+			)}
+    </>
   )
 }

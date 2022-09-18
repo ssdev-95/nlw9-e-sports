@@ -1,12 +1,12 @@
 export declare global {
 	namespace ReactNavigation {
 		interface RootParamList {
-			home: any
-			game: any/*{
+			home: undefined
+			game: {
 				id: string
 				title: string
 				bannerUrl: string
-			}*/
+			}
 		}
 	}
 }

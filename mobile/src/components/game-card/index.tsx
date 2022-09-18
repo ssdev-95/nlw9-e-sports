@@ -11,7 +11,7 @@ import { styles } from './styles'
 import { THEME } from '../../theme'
 
 interface Game extends DuoFinder.Game {
-  ads: number
+  adsCount: number
 }
 
 interface CardProps extends TouchableOpacityProps {
@@ -25,7 +25,7 @@ export function GameCard({ game, ...rest }: CardProps) {
         <LinearGradient style={styles.footer} colors={THEME.COLORS.FOOTER}>
           <Text style={styles.name}>{game.title}</Text>
 
-          <Text style={styles.ads}>{`${game.ads} ads`}</Text>
+          <Text style={styles.ads}>{`${game.adsCount} ads`}</Text>
         </LinearGradient>
       </ImageBackground>
     </TouchableOpacity>

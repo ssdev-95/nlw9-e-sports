@@ -1,7 +1,18 @@
 import { useState, useEffect } from 'react'
-import { Image, View, FlatList, TouchableOpacity } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-//import { useRoute, useNavigation } from '@react-navigation/native'
+
+import {
+  View,
+  Image,
+	FlatList,
+	TouchableOpacity
+} from 'react-native'
+
+import { 
+  SafeAreaView
+} from 'react-native-safe-area-context'
+
+import { useRoute } from '@react-navigation/native'
+
 import { Entypo	} from '@expo/vector-icons'
 
 import { Logo } from '../../components/logo'
@@ -23,20 +34,9 @@ interface DCResponse {
   discord:string
 }
 
-export function Game() {
-  /*const navigation = useNavigation()
-	const route = useRoute()
-	const game = route.params as Game
-
-	function handleGoBack() {
-	  navigation.goBack()
-	}*/
-
-	const game = {
-  	id: '00f9715a-9399-4acd-a290-3b1134eaaa81',
-	  title: 'League of Cats',
-		bannerUrl: 'https://http.cat/401'
-	}
+export function Game({ navigation }:any) {
+  const { params } = useRoute()
+	const { id, title, bannerUrl } = params as DuoFinder.Game
 
 	const [isLoadingContent, setIsLoadingContent] = useState(true)
 	const [duos, setDuos] = useState<Duo[]>([])
@@ -50,7 +50,7 @@ export function Game() {
 
   useEffect(() => {
 	  api
-		  .get<Duo[]>(`/games/${game.id}/ads`)
+		  .get<Duo[]>(`/games/${id}/ads`)
 			.then(({data}) => {
 			  console.log('Renderizou a gamescreen :D')
 			  setDuos(data)
@@ -61,7 +61,7 @@ export function Game() {
 
 	if(isLoadingContent) {
 	  return (
-		  <Background>
+		  <Background style={styles.container}>
 			  <SafeAreaView style={styles.container}>
 				  <Loader />
 				</SafeAreaView>
@@ -78,7 +78,10 @@ export function Game() {
 					onClose={()=>setSelectedDuo('')}
 				/>
 			  <View style={styles.header}>
-  		    <TouchableOpacity style={styles.buttonBack}>
+  		    <TouchableOpacity
+					  style={styles.buttonBack}
+						onPress={navigation.goBack}
+					>
 			  	  <Entypo
 		  	  	  name="chevron-left"
 		    			size={20}
@@ -95,13 +98,13 @@ export function Game() {
 	    	</View>
 
   			<Image
-					source={{ uri: game.bannerUrl }}
+					source={{ uri: bannerUrl }}
   				style={styles.cover}
 					resizeMode="cover"
 	  		/>
 
   			<Heading
-	  		  title={game.title}
+	  		  title={title}
 		  		subtitle="Connect to start playing.."
 				/>
 

@@ -5,20 +5,26 @@ import {
 import { Game } from '../screens/game'
 import { Home } from '../screens/home'
 
-const Stack = createNativeStackNavigator()
+const {
+  Navigator,
+	Screen
+} = createNativeStackNavigator()
 
 export function AppRoutes() {
   return (
-	  <Stack.Navigator
-			initialRouteName="home"
+	  <Navigator
+		  initialRouteName="home"
+			screenOptions={{ headerShown: false }}
 		>
-		  <Stack.Screen name="home">
-			  {Home}
-			</Stack.Screen>
+		  <Screen
+			  name="home"
+				component={Home}
+			/>
 
-			<Stack.Screen name="game">
-			  {Game}
-			</Stack.Screen>
-		</Stack.Navigator>
+			<Screen
+			  name="game"
+			  component={Game}
+			/>
+		</Navigator>
 	)
 }
