@@ -1,6 +1,6 @@
 import './styles/main.css'
 
-import React from 'react'
+//import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { App } from './App'
 
@@ -8,9 +8,9 @@ import eruda from 'eruda'
 import erudaDOM from 'eruda-dom'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+  //<React.StrictMode>
     <App />
-  </React.StrictMode>
+  //</React.StrictMode>
 )
 
 if(

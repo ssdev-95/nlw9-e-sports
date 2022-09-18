@@ -18,6 +18,7 @@ module.exports = {
 			backgroundImage: {
 				galaxy: 'url("/nlw9-background.png")',
 				'nlw-gradient': 'linear-gradient(89.86deg, #9572fc 33%, #43e7ad 55%, #e1d55d 80.08%)',
+				'nlw-grad-extended': 'linear-gradient(89.86deg, #9572fc 23%, #43e7ad 45%, #e1d55d 68.08%, transparent 90%)',
 				'game-gradient': 'linear-gradient(100deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 40.08%)'
 			},
 			screens: {

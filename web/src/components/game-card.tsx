@@ -1,7 +1,7 @@
 interface Game {
-  id:number,
-	title:string,
-	adsCount:number,
+  id:string
+	title:string
+	adsCount:number
 	bannerUrl:string
 }
 

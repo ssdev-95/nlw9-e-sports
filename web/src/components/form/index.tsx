@@ -8,12 +8,17 @@ import { Check, GameController } from 'phosphor-react'
 
 import {
   useState,
+	useEffect,
 	FormEvent,
 	FormHTMLAttributes as Attributes
 } from 'react'
 
 import { Input } from './input'
 import { Label } from './label'
+import { Game } from '../../App'
+import { Loading } from '../loading'
+
+import { api } from '../../services/api'
 
 type FormProps = Omit<
   Attributes<HTMLFormElement>,
@@ -31,20 +36,50 @@ const weekDaysChars = [
 ]
 
 export function Form(props:FormProps) {
+  const [gameOptions, setGameOptions] = useState<Game[]>([])
   const [selectedDays, setSelectedDays] = useState<string[]>([])
 	const [useVoiceChannel, setUseVoiceChannel] = useState(false)
+	const [gameId, setGameId] = useState('')
 
-	function handleCreateNewAd(event:FormEvent) {
+	const [isSubmitting, setIsSubmitting] = useState(false)
+
+	async function handleCreateNewAd(event:FormEvent) {
 	  event.preventDefault()
 
 		const target = event.target as HTMLFormElement
 		const formData = new FormData(target)
-		const data = Object.fromEntries(formData)	
+		const data = Object.fromEntries(formData)
 
-		console.log(data)
-		console.log(useVoiceChannel)
-		console.log(selectedDays)
+		const weekDays = selectedDays.map(Number)
+
+		const newAd = {
+		   ...data,
+			 yearsOfPlaying: data.yearsOfPlaying,
+			 useVoiceChannel,
+			 weekDays
+		}
+
+		if(
+		  Object.values(newAd).some(value => !value) ||
+			gameId === ''
+		) {
+		  return alert('Please, fill al fields!!')
+		}
+
+		setIsSubmitting(true)
+
+		await api
+		  .post(`/games/${gameId}/ads`, newAd)
+			.catch(console.log)
+			.finally(() => setIsSubmitting(false))
 	}
+
+	useEffect(() => {
+	  api
+		  .get('/games')
+			.then(({data}) => setGameOptions(data))
+			.catch(console.log)
+	}, [])
 
   return (
     <form
@@ -55,7 +90,13 @@ export function Form(props:FormProps) {
 		  <Label>
 			  What game
 
-			  <Select name="game" />
+			  <Select
+				  name="game"
+					options={gameOptions}
+					onValueChanged={(value:string) => {
+					  setGameId(value)
+					}}
+				/>
 			</Label>
 
 			<Label>
@@ -71,10 +112,7 @@ export function Form(props:FormProps) {
 			  <Label>
   				Years of playing
 
-				  <Input
-					  name="yearsPlaying"
-					  placeholder="It'ss fine be ZERO"
-					/>
+				  <Input name="yearsOfPlaying" />
 				</Label>
 
 				<Label>
@@ -158,9 +196,16 @@ export function Form(props:FormProps) {
 				<button
 				  className="bg-violet-500 hover:bg-violet-600 px-3 h-12 rounded flex gap-2 items-center justify-center"
 					type="submit"
+					disabled={isSubmitting}
 				>
-				  <GameController size={24} />
-				  Find duo
+				  {isSubmitting ? (
+					  <Loading small />
+					) : (
+					  <>
+    				  <GameController size={24} />
+		    		  Find duo
+					  </>
+					)}
 				</button>
 			</footer>
 		</form>
