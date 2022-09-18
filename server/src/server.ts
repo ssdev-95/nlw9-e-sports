@@ -9,10 +9,8 @@ const PORT = process.env.PORT
 
 const server = express()
 
-const allowedOrigins = ['localhost']
-
 server.use(cors({
-	origin: allowedOrigins
+	origin: '*'
 }))
 
 server.use(express.urlencoded({ extended: true }))
