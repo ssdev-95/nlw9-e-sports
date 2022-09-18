@@ -19,6 +19,10 @@ import { api } from '../../services/api'
 type Game = DuoFinder.Game
 type Duo = DuoFinder.Duo
 
+interface DCResponse {
+  discord:string
+}
+
 export function Game() {
   /*const navigation = useNavigation()
 	const route = useRoute()
@@ -29,7 +33,7 @@ export function Game() {
 	}*/
 
 	const game = {
-  	id: 'ga_m2f8chnwsOGb29f93',
+  	id: '00f9715a-9399-4acd-a290-3b1134eaaa81',
 	  title: 'League of Cats',
 		bannerUrl: 'https://http.cat/401'
 	}
@@ -38,9 +42,15 @@ export function Game() {
 	const [duos, setDuos] = useState<Duo[]>([])
 	const [selectedDuo, setSelectedDuo] = useState('')
 
+	async function openDuoModal(adId:string) {
+	  const { data } = await api.get<DCResponse>(`/ads/${adId}/discord`)
+
+	  setSelectedDuo(data.discord)
+	}
+
   useEffect(() => {
 	  api
-		  .get<Duo[]>('/DUOS')
+		  .get<Duo[]>(`/games/${game.id}/ads`)
 			.then(({data}) => {
 			  console.log('Renderizou a gamescreen :D')
 			  setDuos(data)
@@ -68,11 +78,11 @@ export function Game() {
 					onClose={()=>setSelectedDuo('')}
 				/>
 			  <View style={styles.header}>
-  		    <TouchableOpacity>
+  		    <TouchableOpacity style={styles.buttonBack}>
 			  	  <Entypo
-		  	  	  name="chevron-thin-left"
+		  	  	  name="chevron-left"
 		    			size={20}
-		  			  color={THEME.COLORS.CAPTION_300}
+		  			  color={THEME.COLORS.PRIMARY}
 	  				/>
 					</TouchableOpacity>
 	
@@ -101,12 +111,11 @@ export function Game() {
 					renderItem={({ item }) => (
 					  <DuoCard
 						  duo={item}
-							onPress={()=>setSelectedDuo(item.id)}
+							onPress={()=>openDuoModal(item.id)}
 						/>
 					)}
 					horizontal
 					showsHorizontalScrollIndicator={false}
-					style={styles.containerList}
 					contentContainerStyle={styles.contentList}
 				/>
       </SafeAreaView>

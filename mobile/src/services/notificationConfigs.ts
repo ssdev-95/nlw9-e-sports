@@ -7,6 +7,3 @@ Notifications.setNotificationHandler({
 		shouldSetBadge:true
 	})
 })
-
-
-export * as Notifications from 'expo-notifications'

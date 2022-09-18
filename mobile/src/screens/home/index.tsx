@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { useNavigation } from '@react-navigation/native'
+//import { useNavigation } from '@react-navigation/native'
 
 import { api } from '../../services/api'
 
@@ -19,26 +19,20 @@ interface Game extends DuoFinder.Game {
 }
 
 export function Home() {
-  const navigator = useNavigation()
+  //const navigator = useNavigation()
   const [games, setGames] = useState<Game[]>([])
 	const [isLoadingContent, setIsLoadingContent] = useState(true)
 
 	function handleGoToGameScreen(game: DuoFinder.Game) {
-	  navigator.navigate('game', game)
+	  //navigator.navigate('game', game)
+		console.log(game)
 	}
 
   useEffect(() => {
 	  console.log('Renderizou a homescreen :D')
     api
-		  .get<Game[]>('/GAMES')
-			.then((res) => {
-			  const data = res.data.map(game => ({
-				  ...game,
-					id: String(game.id)
-				}))
-
-				setGames(data)
-			})
+		  .get<Game[]>('/games')
+			.then((res) => setGames(res.data))
 			.catch(console.log)
 			.finally(() => setIsLoadingContent(false))
   }, [])

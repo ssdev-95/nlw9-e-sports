@@ -9,18 +9,23 @@ export const styles = StyleSheet.create({
 	header: {
 		width: '100%',
 		paddingHorizontal: 32,
-		marginTop: 28,
+		marginLeft: 'auto',
+		marginVertical: 28,
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'space-between'
+		justifyContent: 'space-evenly'
 	},
 	logo: {
 		height: 40,
 		width: 72
 	},
+	buttonBack: {
+		marginRight: 'auto'
+	},
 	right: {
 		height: 20,
-		width: 20
+		width: 20,
+		marginLeft: 'auto'
 	},
 	cover: {
 		width: 311,

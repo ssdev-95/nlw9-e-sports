@@ -3,6 +3,7 @@ import './src/services/notificationConfigs'
 import { useRef, useEffect } from 'react'
 import { StatusBar } from 'react-native'
 import { Subscription } from 'expo-modules-core'
+import * as Notifications from 'expo-notifications'
 
 import {
   useFonts,
@@ -16,7 +17,6 @@ import { Game } from './src/screens/game'
 import { Background } from './src/components/background'
 import { Loader } from './src/components/loading'
 import { getPushNotificationToken } from './src/services/getPushNotificationToken'
-import { Notifications } from './src/services/notificationConfigs'
 
 export default function App() {
   const [fontsLoaded] = useFonts({

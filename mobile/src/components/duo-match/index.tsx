@@ -59,8 +59,8 @@ export function DuoMatch({ discord, onClose, ...props }:Props) {
 
 					<MaterialIcons
 					  name="check-circle-outline"
-						size={64}
-						color={THEME.COLORS.SHAPE}
+						size={72}
+						color={THEME.COLORS.PRIMARY}
 					/>
 
 					<Heading

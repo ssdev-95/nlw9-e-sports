@@ -10,7 +10,7 @@ export declare global {
 			id:string
 			name:string
 			yearsOfPlaying:number
-			weekDays:string[]
+			weekDays:number[]
 			hourStart:string
 			hourEnd:string
 			useVoiceChannel:boolean

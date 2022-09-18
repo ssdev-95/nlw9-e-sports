@@ -23,7 +23,8 @@ export const styles = StyleSheet.create({
 	heading: {
 		alignItems: 'center',
 		marginVertical: 24,
-		gap: 4
+		gap: 4,
+		maxWidth: '80%'
 	},
 	label: {
 		marginBottom: 8,
